@@ -1,35 +1,50 @@
-document.querySelector('#push').onclick = function () {
+document.addEventListener('DOMContentLoaded', function () {
   const inputText = document.querySelector('#new-task input');
+  const pushBtn = document.querySelector('#new-task #push');
   const tasks = document.querySelector('#tasks');
-  
-  if (document.querySelector('#new-task input').value.length == 0) {
-    alert('Please Enter a Task');
-  } else {
+
+  pushBtn.addEventListener('click', function() {
+    addTask()
+  });
+
+  inputText.addEventListener('keydown', function(e) {
+    if(e.key === 'Enter' || e.keyCode === 13) {
+      addTask()
+    }
+  })
+
+  function addTask() {
+    const textInput = inputText.value.trim();
+
+    if(textInput.length === 0) {
+      return;
+    }
+
     tasks.innerHTML += `
-    <div class="task">
-    <span id="taskname">
-    ${inputText.value}
-    </span>
-    <button class='delete'>
-    <i class="fa-solid fa-trash"></i>
-    </button>
-    </div>
-    `;
-    
-    const current_task = document.querySelectorAll('.delete');
-    for (let i = 0; i < current_task.length; i++) {
-      current_task[i].onclick = function () {
-        this.parentNode.remove();
-      };
-    }
-    
+      <div class="task">
+          <span id="taskname">${textInput}</span>
+        <button class="delete">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    `
+    inputText.value = '';
+    inputText.focus();
+
+    const deleteBtns = document.querySelectorAll('.delete');
+    deleteBtns.forEach((deleteBtn) => {
+      deleteBtn.addEventListener('click', function() {
+        this.parentNode.remove()
+      })
+    })
+
     const task = document.querySelectorAll('.task');
-    for (let i = 0; i < task.length; i++) {
-      task[i].onclick = function () {
-        this.classList.toggle('completed');
-      };
-    }
+    task.forEach((task) => {
+      task.addEventListener('click', function() {
+        this.classList.toggle('completed')
+      })
+    })
   }
-  inputText.value = '';
-  inputText.focus();
-};
+  
+    
+})
