@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/bf47d2feb7.js" crossorigin="anonymous"></script>
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search product name here...">
+        <button id="search">Search</button>
+      </div>
+
+      <div id="buttons">
+        <button class="button-value" onclick="filterProduct('all')">All</button>
+        <button class="button-value" onclick="filterProduct('Top-wear')">Top-wear</button>
+        <button class="button-value" onclick="filterProduct('Bottom-wear')">Bottom-wear</button>
+        <button class="button-value" onclick="filterProduct('Jacket')">Jacket</button>
+        <button class="button-value" onclick="filterProduct('Watch')">Watch</button>
+      </div>
+      <div id="products"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
