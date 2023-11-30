@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
+
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -13,6 +14,16 @@ body {
   background: #0f1219;
 }
 
+.container {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -22,14 +33,14 @@ header {
   align-items: center;
   justify-content: space-between;
   transition: 0.6s;
-  padding: 40px 100px;
-  z-index: 100000;
+  z-index: 500;
 }
 
 header.sticky {
-  padding: 5px 100px;
-  background-color: #fff;
-} 
+  /* padding: 5px 100px; */
+  background-color: rgba(8, 251, 255, 0.644);
+    backdrop-filter: blur(19px);
+}
 
 header .logo {
   position: relative;
@@ -60,22 +71,22 @@ nav a {
 }
 
 #marker {
-	position: absolute;
-	bottom: 0;
-	height: 100%;
-	width: 90px;
-	border-bottom: 5px solid #08f9ff;
-	background: linear-gradient(0deg, #88f9ff33, transparent);
-	transition: 0.4s;
-	pointer-events: none;
-	filter: drop-shadow(0 5px 25px #08f9ff);
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 90px;
+  border-bottom: 5px solid #08f9ff;
+  background: linear-gradient(0deg, #88f9ff33, transparent);
+  transition: 0.4s;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 25px #08f9ff);
 }
 
 .banner {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('./image//watch.jpg');
+  background: url('./image/watch.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -85,7 +96,95 @@ header.sticky nav li a {
   color: #0f1219;
 }
 
-
 .section1 {
   height: 100vh;
+}
+
+
+/* menu */
+
+
+
+.menu__burger-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 501;
+  display: none;
+}
+
+.menu__burger-btn span {
+  display: block;
+  position: absolute;
+}
+
+.menu__burger-close {
+  display: none;
+}
+
+
+
+@media (max-width: 992px) {
+  #marker {
+    display: none;
+  }
+  .menu__burger-btn {
+    display: block;
+   }
+
+   .menu__burger-close {
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+  }
+
+   .menu {
+    position: absolute;
+    background-color: rgba(8, 251, 255, 0.1);
+    backdrop-filter: blur(200px);
+    top: 0;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    transition: all .5s ease;
+   }
+
+
+   .open{
+    right: 0;
+   }
+
+   nav {
+   display: block;
+    margin-top: 50px;
+    padding: 75px 20px 20px 40px;
+    transition: transform .5s;
+   }
+
+   nav a {
+    display: block;
+    color: #fff !important;
+   }
+
+   nav::before {
+    content: 'LOGO';
+    font-size: 30px;
+    color: #fff;
+    font-weight: 500;
+   }
+
+   nav a:hover {
+      opacity: 0.6;
+   }
+
+   .menu__burger-btn {
+    
+   }
 }
